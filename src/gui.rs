@@ -192,7 +192,7 @@ pub fn run() -> Result<()> {
         .map_err(|e| anyhow::anyhow!("timer: {e:?}"))?;
 
     // Pre-fill credentials. Prefer the persistent per-user store
-    // (%APPDATA%\mhr-cfw-launcher\credentials.json), then fall back to the
+    // (%APPDATA%\hamid-mahdavi-client\credentials.json), then fall back to the
     // project's config.json. Either way, both fields show up across runs.
     if let Some((sid, ak)) = credentials::load() {
         script_id_input.set_text(&sid);

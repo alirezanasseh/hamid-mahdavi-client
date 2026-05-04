@@ -44,7 +44,7 @@ pub fn credentials_path() -> Option<PathBuf> {
     let appdata = std::env::var_os("APPDATA")?;
     Some(
         PathBuf::from(appdata)
-            .join("mhr-cfw-launcher")
+            .join("hamid-mahdavi-client")
             .join("credentials.json"),
     )
 }

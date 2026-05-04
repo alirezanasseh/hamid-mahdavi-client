@@ -4,7 +4,7 @@ use std::fs;
 
 use crate::paths;
 
-/// Read previously-saved credentials from `%APPDATA%\mhr-cfw-launcher\credentials.json`.
+/// Read previously-saved credentials from `%APPDATA%\hamid-mahdavi-client\credentials.json`.
 /// Returns None if the file is missing, malformed, or APPDATA is unset.
 pub fn load() -> Option<(String, String)> {
     let path = paths::credentials_path()?;
