@@ -13,6 +13,10 @@ pub fn config_path() -> PathBuf {
     project_dir().join("config.json")
 }
 
+pub fn config_example_path() -> PathBuf {
+    project_dir().join("config.example.json")
+}
+
 pub fn requirements_path() -> PathBuf {
     project_dir().join("requirements.txt")
 }
