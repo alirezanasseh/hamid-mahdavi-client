@@ -5,6 +5,16 @@ Single-exe Windows launcher for the [mhr-cfw](https://github.com/denuitt1/mhr-cf
 For non-technical users: double-click the exe, accept the UAC prompt, fill in
 `script_id` and `auth_key`, click Connect.
 
+## Download
+
+Grab the latest exe from the
+[releases page](https://github.com/alirezanasseh/hamid-mahdavi-client/releases/latest),
+or direct-link to the always-current build:
+
+[**hamid-mahdavi-client.exe**](https://github.com/alirezanasseh/hamid-mahdavi-client/releases/latest/download/hamid-mahdavi-client.exe)
+
+No installer, no dependencies — just save the file and run it.
+
 ## What it does
 
 **First run**
