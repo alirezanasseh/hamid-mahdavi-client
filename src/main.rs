@@ -3,6 +3,7 @@
 #[cfg(windows)]
 mod cert;
 mod config;
+mod credentials;
 mod download;
 #[cfg(windows)]
 mod gui;
@@ -13,6 +14,7 @@ mod proxy;
 mod python;
 mod report;
 mod runner;
+mod util;
 
 #[cfg(windows)]
 fn main() {

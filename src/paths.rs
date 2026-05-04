@@ -29,6 +29,22 @@ pub fn install_marker_path() -> PathBuf {
     project_dir().join(".launcher-installed")
 }
 
+pub fn cert_marker_path() -> PathBuf {
+    project_dir().join(".cert-installed")
+}
+
 pub fn log_dir() -> PathBuf {
     project_dir().join("logs")
+}
+
+/// Persistent per-user credential store, kept outside the project dir so it
+/// survives a project reinstall. Returns None if APPDATA is unset (e.g. on a
+/// non-Windows host running `cargo check`).
+pub fn credentials_path() -> Option<PathBuf> {
+    let appdata = std::env::var_os("APPDATA")?;
+    Some(
+        PathBuf::from(appdata)
+            .join("mhr-cfw-launcher")
+            .join("credentials.json"),
+    )
 }

@@ -7,6 +7,7 @@ use std::process::Command;
 
 use crate::paths;
 use crate::python::PythonInfo;
+use crate::util;
 
 /// Download the project zip from GitHub and extract into `C:\mhr-cfw`.
 /// The GitHub zip contains a single top-level dir like `mhr-cfw-main/` — we
@@ -94,21 +95,25 @@ where
         return Ok(());
     }
     progress("Installing project libraries (pip)...");
-    let status = Command::new(&py.exe)
-        .args(["-m", "pip", "install", "--upgrade", "pip"])
-        .current_dir(paths::project_dir())
-        .status()
-        .context("running pip self-upgrade")?;
+    let status = util::no_console(
+        Command::new(&py.exe)
+            .args(["-m", "pip", "install", "--upgrade", "pip"])
+            .current_dir(paths::project_dir()),
+    )
+    .status()
+    .context("running pip self-upgrade")?;
     if !status.success() {
         return Err(anyhow!("pip self-upgrade failed: {:?}", status.code()));
     }
 
-    let status = Command::new(&py.exe)
-        .args(["-m", "pip", "install", "-r"])
-        .arg(&req)
-        .current_dir(paths::project_dir())
-        .status()
-        .context("running pip install")?;
+    let status = util::no_console(
+        Command::new(&py.exe)
+            .args(["-m", "pip", "install", "-r"])
+            .arg(&req)
+            .current_dir(paths::project_dir()),
+    )
+    .status()
+    .context("running pip install")?;
     if !status.success() {
         return Err(anyhow!("pip install failed: {:?}", status.code()));
     }

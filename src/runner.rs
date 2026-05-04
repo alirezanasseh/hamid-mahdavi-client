@@ -7,6 +7,7 @@ use std::thread;
 
 use crate::paths;
 use crate::python::PythonInfo;
+use crate::util;
 
 const LOG_RING_CAP: usize = 1000;
 
@@ -46,14 +47,16 @@ pub struct Runner {
 impl Runner {
     pub fn spawn(py: &PythonInfo, logs: LogRing) -> Result<Self> {
         let main_py = paths::main_script_path();
-        let mut child = Command::new(&py.exe)
-            .arg(&main_py)
-            .current_dir(paths::project_dir())
-            .stdout(Stdio::piped())
-            .stderr(Stdio::piped())
-            .stdin(Stdio::null())
-            .spawn()
-            .context("spawning python main.py")?;
+        let mut child = util::no_console(
+            Command::new(&py.exe)
+                .arg(&main_py)
+                .current_dir(paths::project_dir())
+                .stdout(Stdio::piped())
+                .stderr(Stdio::piped())
+                .stdin(Stdio::null()),
+        )
+        .spawn()
+        .context("spawning python main.py")?;
 
         if let Some(stdout) = child.stdout.take() {
             let logs = logs.clone();

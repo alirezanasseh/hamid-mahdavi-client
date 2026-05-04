@@ -3,6 +3,8 @@ use std::env;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
+use crate::util;
+
 const MIN_MAJOR: u32 = 3;
 const MIN_MINOR: u32 = 10;
 
@@ -63,7 +65,7 @@ fn which(exe: &str) -> Option<PathBuf> {
 
 fn probe(exe: &Path) -> Option<PythonInfo> {
     // `py -3` style: launcher exe still accepts -V
-    let output = Command::new(exe).arg("-V").output().ok()?;
+    let output = util::no_console(Command::new(exe).arg("-V")).output().ok()?;
     let combined = format!(
         "{}{}",
         String::from_utf8_lossy(&output.stdout),
@@ -123,17 +125,18 @@ where
     .context("downloading Python installer")?;
 
     progress("Running Python installer (this may take a minute)...");
-    let status = Command::new(&installer_path)
-        .args([
+    let status = util::no_console(
+        Command::new(&installer_path).args([
             "/quiet",
             "InstallAllUsers=1",
             "PrependPath=1",
             "Include_test=0",
             "Include_launcher=1",
             "SimpleInstall=1",
-        ])
-        .status()
-        .context("running python installer")?;
+        ]),
+    )
+    .status()
+    .context("running python installer")?;
 
     if !status.success() {
         return Err(anyhow!(
