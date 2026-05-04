@@ -87,6 +87,14 @@ pub fn run() -> Result<()> {
         .map_err(|e| anyhow::anyhow!("font set failed: {e:?}"))?;
 
     let state = Arc::new(AppState::new());
+
+    // Load the icon embedded by app.rc (resource ID 1) so it shows on the
+    // window title bar, taskbar, and alt-tab. Explorer/taskbar already pick
+    // the EXE icon from the same resource automatically.
+    let embed = nwg::EmbedResource::load(None)
+        .map_err(|e| anyhow::anyhow!("embed resource load: {e:?}"))?;
+    let app_icon = embed.icon(1, None);
+
     let mut window = nwg::Window::default();
     let mut status_label = nwg::Label::default();
     let mut log_box = nwg::TextBox::default();
@@ -103,6 +111,7 @@ pub fn run() -> Result<()> {
         .size((560, 460))
         .position((300, 200))
         .title("mhr-cfw VPN")
+        .icon(app_icon.as_ref())
         .flags(nwg::WindowFlags::WINDOW | nwg::WindowFlags::VISIBLE)
         .build(&mut window)
         .map_err(|e| anyhow::anyhow!("window build: {e:?}"))?;
