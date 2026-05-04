@@ -15,6 +15,23 @@ or direct-link to the always-current build:
 
 No installer, no dependencies — just save the file and run it.
 
+## First launch
+
+The first time you run the exe, Windows shows a SmartScreen warning
+(*"Windows protected your PC"*) because the binary isn't code-signed.
+The file is fine — two clicks to get past it:
+
+1. In the dialog, click **More info**.
+
+   ![SmartScreen warning dialog](docs/smartscreen-1.png)
+
+2. The dialog expands. Click **Run anyway**.
+
+   ![SmartScreen with Run anyway button](docs/smartscreen-2.png)
+
+Windows remembers the choice for that exe, so subsequent launches go
+straight to the UAC prompt.
+
 ## What it does
 
 **First run**
