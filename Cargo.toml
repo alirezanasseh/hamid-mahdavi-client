@@ -1,6 +1,6 @@
 [package]
 name = "hamid-mahdavi-client"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Single-exe launcher for the mhr-cfw VPN client"
 

@@ -110,7 +110,7 @@ pub fn run() -> Result<()> {
     nwg::Window::builder()
         .size((560, 460))
         .position((300, 200))
-        .title("mhr-cfw VPN")
+        .title("Hamid Mahdavi Client")
         .icon(app_icon.as_ref())
         .flags(nwg::WindowFlags::WINDOW | nwg::WindowFlags::VISIBLE)
         .build(&mut window)
