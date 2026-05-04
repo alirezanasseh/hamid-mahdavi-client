@@ -21,7 +21,7 @@ pub fn write(
     let path = dir.join(format!("report-{stamp}.txt"));
 
     let mut out = String::new();
-    out.push_str("=== mhr-cfw launcher failure report ===\n");
+    out.push_str("=== hamid-mahdavi-client failure report ===\n");
     out.push_str(&format!(
         "When: {}\n",
         chrono::Local::now().to_rfc3339()

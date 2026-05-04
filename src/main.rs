@@ -25,7 +25,7 @@ fn main() {
                 MessageBoxW, MB_ICONERROR, MB_OK,
             };
             let msg: Vec<u16> = format!("{e:#}\0").encode_utf16().collect();
-            let title: Vec<u16> = "mhr-cfw launcher\0".encode_utf16().collect();
+            let title: Vec<u16> = "hamid-mahdavi-client\0".encode_utf16().collect();
             MessageBoxW(
                 None,
                 PCWSTR(msg.as_ptr()),
@@ -39,6 +39,6 @@ fn main() {
 
 #[cfg(not(windows))]
 fn main() {
-    eprintln!("mhr-cfw-launcher is Windows-only. Build on Windows with `cargo build --release`.");
+    eprintln!("hamid-mahdavi-client is Windows-only. Build on Windows with `cargo build --release`.");
     std::process::exit(1);
 }

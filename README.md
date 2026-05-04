@@ -1,4 +1,4 @@
-# mhr-cfw-launcher
+# hamid-mahdavi-client
 
 Single-exe Windows launcher for the [mhr-cfw](https://github.com/denuitt1/mhr-cfw) VPN.
 
@@ -12,7 +12,7 @@ For non-technical users: double-click the exe, accept the UAC prompt, fill in
 1. Detects Python ≥ 3.10 in PATH and registry. If missing, downloads the
    official installer matching the OS architecture and installs it silently
    (all-users, PATH prepended).
-2. Downloads the project zip from GitHub and extracts it to `C:\mhr-cfw`.
+2. Downloads the project zip from GitHub and extracts it to `C:\hamid-mahdavi-client`.
 3. Runs `pip install -r requirements.txt`.
 4. Prompts for `script_id` and `auth_key` and writes `config.json`.
 5. Spawns `python main.py`.
@@ -23,13 +23,13 @@ For non-technical users: double-click the exe, accept the UAC prompt, fill in
 8. Shows status (connected / failed / stopped) in the GUI.
 
 **Subsequent runs** skip steps 1–4 (install marker file at
-`C:\mhr-cfw\.launcher-installed`) and go straight to spawning the VPN
+`C:\hamid-mahdavi-client\.launcher-installed`) and go straight to spawning the VPN
 process and enabling the proxy.
 
 **On exit** the launcher kills the child and clears the system proxy.
 
 **On failure** click *Save Report* — produces a single text file under
-`C:\mhr-cfw\logs\` with environment info and the last 1000 lines of child
+`C:\hamid-mahdavi-client\logs\` with environment info and the last 1000 lines of child
 output, suitable for pasting into an AI chat for diagnosis.
 
 ## Building
@@ -41,7 +41,7 @@ installed:
 cargo build --release
 ```
 
-Output: `target\release\mhr-cfw-launcher.exe` (~2 MB after `strip`).
+Output: `target\release\hamid-mahdavi-client.exe` (~2 MB after `strip`).
 
 The exe is fully self-contained — no DLLs, no installer needed. The embedded
 manifest requests admin rights (UAC), which are needed for installing
@@ -53,7 +53,7 @@ broadcasting proxy changes.
 After building, run [UPX](https://upx.github.io/) to compress further:
 
 ```cmd
-upx --best --lzma target\release\mhr-cfw-launcher.exe
+upx --best --lzma target\release\hamid-mahdavi-client.exe
 ```
 
 Typical result: ~1 MB.
@@ -74,7 +74,7 @@ src/
   python.rs     — detect / install Python
   project.rs    — download + extract repo zip, run pip
   config.rs     — read/write config.json, install marker
-  paths.rs      — C:\mhr-cfw constants
+  paths.rs      — C:\hamid-mahdavi-client constants
   download.rs   — streaming HTTP download with progress
   proxy.rs      — set / clear system proxy via registry
   cert.rs       — invoke `python main.py --install-cert`

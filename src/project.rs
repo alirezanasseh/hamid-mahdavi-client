@@ -9,9 +9,9 @@ use crate::paths;
 use crate::python::PythonInfo;
 use crate::util;
 
-/// Download the project zip from GitHub and extract into `C:\mhr-cfw`.
+/// Download the project zip from GitHub and extract into `C:\hamid-mahdavi-client`.
 /// The GitHub zip contains a single top-level dir like `mhr-cfw-main/` — we
-/// flatten it so files land directly under `C:\mhr-cfw`.
+/// flatten it so files land directly under `C:\hamid-mahdavi-client`.
 pub fn download_and_extract<F>(mut progress: F) -> Result<()>
 where
     F: FnMut(&str),

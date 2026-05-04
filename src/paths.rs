@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 
-pub const PROJECT_DIR: &str = r"C:\mhr-cfw";
+pub const PROJECT_DIR: &str = r"C:\hamid-mahdavi-client";
 pub const PROJECT_REPO_ZIP: &str =
     "https://github.com/denuitt1/mhr-cfw/archive/refs/heads/main.zip";
 pub const PROXY_HOST_PORT: &str = "127.0.0.1:8085";
