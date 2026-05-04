@@ -50,6 +50,7 @@ impl Runner {
         let mut child = util::no_console(
             Command::new(&py.exe)
                 .arg(&main_py)
+                .arg("--no-cert-check")
                 .current_dir(paths::project_dir())
                 .stdout(Stdio::piped())
                 .stderr(Stdio::piped())

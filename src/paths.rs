@@ -33,6 +33,14 @@ pub fn cert_marker_path() -> PathBuf {
     project_dir().join(".cert-installed")
 }
 
+pub fn ca_cert_path() -> PathBuf {
+    project_dir().join("ca").join("ca.crt")
+}
+
+pub fn src_dir() -> PathBuf {
+    project_dir().join("src")
+}
+
 pub fn log_dir() -> PathBuf {
     project_dir().join("logs")
 }
