@@ -1,4 +1,4 @@
-# hamid-mahdavi-client
+# Hamid Mahdavi Client
 
 Single-exe Windows launcher for the [mhr-cfw](https://github.com/denuitt1/mhr-cfw) VPN.
 
